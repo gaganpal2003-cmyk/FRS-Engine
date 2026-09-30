@@ -78,7 +78,7 @@ def main():
             if row and row[0]:
                 with open(test_img, "wb") as f:
                     f.write(row[0])
-                print(f"      Extracted sample face image from DB to {test_img.name}")
+                print(f"Extracted sample face image from DB to {test_img.name}")
         except Exception as e:
             pass
 
