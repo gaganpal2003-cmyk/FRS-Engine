@@ -5,6 +5,7 @@ from collections import defaultdict
 from typing import Optional
 from fastapi import Header, HTTPException, Security, status
 from fastapi.security import APIKeyHeader
+from api.config import ADMIN_SECRET
 from api.db import db_manager
 
 # API Key Header definition for Swagger UI
@@ -73,6 +74,14 @@ async def get_current_client(
             detail="API Key missing. Please provide 'x-api-key' header.",
             headers={"WWW-Authenticate": "ApiKey"}
         )
+
+    # Master admin secret bypass (allows master key to be used as API key)
+    if raw_key == ADMIN_SECRET:
+        return {
+            "client_id": 1,
+            "client_name": "Master Administrator",
+            "rate_limit_per_min": 100000
+        }
 
     # Hash the incoming key
     key_hash = hashlib.sha256(raw_key.encode("utf-8")).hexdigest()
