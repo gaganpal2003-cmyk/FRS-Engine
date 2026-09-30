@@ -288,8 +288,8 @@ class DatabaseManager:
 
     def _create_default_client_and_sync(self):
         """Creates the initial default client and imports existing desktop CairoFRS identities."""
-        raw_token = secrets.token_hex(20)
-        api_key = f"frs_live_{raw_token}"
+        # Deterministic master key so it remains persistent across container reboots
+        api_key = os.getenv("FRS_DEFAULT_API_KEY", "frs_live_cairo_master_secret_2026")
         key_hash = hashlib.sha256(api_key.encode("utf-8")).hexdigest()
         key_prefix = api_key[:12]
 
