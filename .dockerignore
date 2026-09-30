@@ -10,6 +10,10 @@ __pycache__
 *.pyd
 .Python
 *.log
+*.db
+*.sqlite
+*.sqlite3
+data/
 dist
 build
 DetectedData

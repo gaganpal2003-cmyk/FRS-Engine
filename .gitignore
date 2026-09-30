@@ -18,6 +18,10 @@
 # Local Runtime Data, Captures & Logs
 # ------------------------------------------------------------------------------
 *.log
+*.db
+*.sqlite
+*.sqlite3
+data/
 attendance/
 Unknown/
 DetectedData/

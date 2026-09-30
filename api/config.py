@@ -17,13 +17,19 @@ if CONFIG_INI_PATH.exists():
     config_parser.read(str(CONFIG_INI_PATH))
 
 # Database configuration (Env overrides settings.ini)
-DB_HOST = os.getenv("FRS_DB_HOST", "localhost")
+# Supported engines: "sqlite" (default, zero-setup embedded) or "mysql"
+DB_HOST = os.getenv("FRS_DB_HOST", "")
+DB_ENGINE = os.getenv(
+    "FRS_DB_ENGINE",
+    "sqlite" if not DB_HOST or DB_HOST.lower() in ("localhost", "sqlite", "none", "") else "mysql"
+).lower()
 DB_USER = os.getenv("FRS_DB_USER", "root")
 DB_PASSWORD = os.getenv("FRS_DB_PASSWORD", "cairo$123")
 DB_NAME = os.getenv(
     "FRS_DB_NAME",
     config_parser.get("MYSQL_DB_NAME", "DB_NAME", fallback="cairo_face_recognition")
 )
+SQLITE_DB_PATH = Path(os.getenv("FRS_SQLITE_PATH", str(BASE_DIR / "data" / "frs_engine.db")))
 
 # API Server configuration (Supports Render's dynamic $PORT)
 API_HOST = os.getenv("FRS_API_HOST", "0.0.0.0")

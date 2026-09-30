@@ -48,14 +48,15 @@ git push -u origin main
    - **Instance Type:** Starter (Recommended for CV models: 1 CPU, 2 GB RAM) or Free
 5. Scroll down to **Environment Variables** and add:
 
-| Key | Value |
-|---|---|
-| `FRS_DB_HOST` | `<your-cloud-mysql-host>` |
-| `FRS_DB_USER` | `<your-cloud-mysql-user>` |
-| `FRS_DB_PASSWORD` | `<your-cloud-mysql-password>` |
-| `FRS_DB_NAME` | `<your-cloud-mysql-db-name>` |
-| `FRS_ADMIN_SECRET` | `cairo_frs_master_secret_2026` |
-| `FRS_RECOGNITION_TOLERANCE` | `0.40` |
+| Key | Value | Description |
+|---|---|---|
+| `FRS_ADMIN_SECRET` | `cairo_frs_master_secret_2026` | Master admin key to generate client keys |
+| `FRS_RECOGNITION_TOLERANCE` | `0.40` | Face match tolerance |
+
+> 💡 **Zero Database Setup Needed!**  
+> The engine automatically uses **built-in SQLite** (`frs_engine.db`) when no MySQL credentials are provided. You **do not need** to enter `FRS_DB_HOST`, `FRS_DB_USER`, or `FRS_DB_PASSWORD`.
+> 
+> *(Optional: If you ever want to connect an external Cloud MySQL database in the future, you can optionally provide `FRS_DB_HOST`, `FRS_DB_USER`, `FRS_DB_PASSWORD`, and `FRS_DB_NAME`).*
 
 6. Click **Create Web Service**.
 
