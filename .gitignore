@@ -1,0 +1,102 @@
+# ==============================================================================
+# Git Ignore for Face Recognition REST API Engine
+# Only files used by the API Engine will be tracked in GitHub.
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Secrets, Environment & Credentials (CRITICAL - DO NOT COMMIT)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+.default_api_key.txt
+*.pem
+*.key
+*.cert
+
+# ------------------------------------------------------------------------------
+# Local Runtime Data, Captures & Logs
+# ------------------------------------------------------------------------------
+*.log
+attendance/
+Unknown/
+DetectedData/
+Tested_result/
+test_gagan_face.jpg
+
+# ------------------------------------------------------------------------------
+# Python & Environment Artifacts
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+*.manifest
+*.spec
+
+# Virtual Environments
+venv/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
+.nox/
+
+# ------------------------------------------------------------------------------
+# IDE, Editor & OS Files
+# ------------------------------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ------------------------------------------------------------------------------
+# Legacy Desktop GUI Application & Assets (Unused in Headless API Engine)
+# ------------------------------------------------------------------------------
+CairoFRS.py
+CairoFRS.spec
+checkDict.py
+gui/
+Modules/
+icon/
+ImageIcons/
+objectIcons/
+popupIcons/
+
+# ------------------------------------------------------------------------------
+# YOLO Fire/Smoke Models & Non-API Detection Assets
+# (Only Detection/FRS_MODEL/ is tracked for Face Recognition)
+# ------------------------------------------------------------------------------
+Detection/alerts/
+Detection/data/
+Detection/model/
+Detection/config.yaml
+Detection/new_classes.txt
+Detection/old_classes.txt
